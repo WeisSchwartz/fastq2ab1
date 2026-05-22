@@ -52,25 +52,46 @@ reference length, so coverage stays flat across the breakpoint.
 - [`minimap2`](https://github.com/lh3/minimap2) — long-read aligner
 - [`samtools`](https://www.htslib.org/) — BAM sort & index
 
-Both must be on your `PATH`.
-
-### Recommended: conda/mamba environment
-```bash
-mamba create -n fastq2ab1 -c bioconda -c conda-forge \
-    python=3.11 pysam biopython minimap2 samtools pytest
-mamba activate fastq2ab1
-```
+Both must be on your `PATH`. The Installation section below sets all of
+this up in one mamba env.
 
 ---
 
 ## Installation
 
-From the repo root:
+`fastq2ab1` is not yet on PyPI; install it directly from GitHub. The
+recommended path is to first create a conda/mamba environment that provides
+the external binaries (`minimap2`, `samtools`) and Python deps, then
+`pip install` the package into it.
+
 ```bash
-pip install -e .
+pip install git+https://github.com/WeisSchwartz/fastq2ab1.git
+
+
+# Confirm everything wired up
+pytest -q
+fastq2ab1 --help
 ```
-This installs the `fastq2ab1` console script and exposes
-`from fastq2ab1 import run` as a library entry point.
+
+### Updating
+
+```bash
+# Option A install: reinstall from GitHub
+pip install --upgrade --force-reinstall \
+    git+https://github.com/WeisSchwartz/fastq2ab1.git
+```
+
+### Uninstall
+
+```bash
+pip uninstall fastq2ab1
+# Optionally remove the whole conda env
+mamba env remove -n fastq2ab1
+```
+
+The install path gives you the same two entry points:
+- a `fastq2ab1` console script on `$PATH`
+- the `from fastq2ab1 import run` library API
 
 ---
 
