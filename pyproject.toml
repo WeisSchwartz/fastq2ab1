@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fastq2ab1"
+version = "0.1.0"
+description = "Convert nanopore FASTQ reads into synthetic AB1 chromatograms."
+readme = "fastq2ab1_spec.md"
+requires-python = ">=3.9"
+authors = [{ name = "Hotta Lab" }]
+license = { text = "MIT" }
+dependencies = [
+    "pysam>=0.22",
+    "biopython>=1.81",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+fastq2ab1 = "fastq2ab1.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["fastq2ab1*"]
+exclude = ["tests*"]

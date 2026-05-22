@@ -1,0 +1,48 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# ---- Build / install artifacts ----
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+pip-wheel-metadata/
+
+# ---- Editable installs / venvs ----
+.venv/
+venv/
+env/
+.python-version
+
+# ---- Test / coverage ----
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# ---- IDE / OS ----
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# ---- Project-specific ----
+# Real sequencing data — kept locally, never committed.
+test data/
+*.bam
+*.bam.bai
+*.fastq
+*.fastq.gz
+*.ab1
+
+# Allow checked-in synthetic test fixtures if we ever add them
+!tests/fixtures/**/*.bam
+!tests/fixtures/**/*.fastq
+!tests/fixtures/**/*.ab1
